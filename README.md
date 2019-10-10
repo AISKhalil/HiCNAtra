@@ -4,4 +4,4 @@
 
 **For more information please visit [HiCNAtra Manuscript]().**
 
-# HiCNAtra software Coming soon...  
+# HiCNAtra software... Coming soon!  
