@@ -4,11 +4,4 @@
 
 **For more information please visit [HiCNAtra Manuscript]().**
 
-### Download CNAtra from github
-
-```bash
-cd ~
-git clone https://github.com/AISKhalil/HiCNAtra.git
-```
-
 # Uploading the HiCNAtra software and user manual in progress.  
