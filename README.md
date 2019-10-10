@@ -4,4 +4,4 @@
 
 **For more information please visit [HiCNAtra Manuscript]().**
 
-# Uploading the HiCNAtra software and user manual in progress.  
+# We are uploading HiCNAtra software and user manual ...  
