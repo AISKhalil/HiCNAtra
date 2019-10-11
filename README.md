@@ -89,7 +89,7 @@ The main analysis parameters of Hi-C:
 
     outputDirectory          - the directory that is used for save all CNV information, raw contact map, and corrected contact map.
 
-		RDmethod                 - the method to be used for computing the RD signal. 1) "entire restriction fragment" counting 
+    RDmethod                 - the method to be used for computing the RD signal. 1) "entire restriction fragment" counting 
                                (best for Hi-C data), 2) Paired-end method (best for 3C-seq), 3) Exact-cut position, 4) Midpoint 
                                approach (default = 1).
     
