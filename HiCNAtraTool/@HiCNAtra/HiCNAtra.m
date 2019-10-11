@@ -14,7 +14,7 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		restrictionEnzyme;
 
 		%maximumMoleculeLength: Maximum length of molecules in the HiC library, used as a cutoff for dangling ends filter.
-		maximumMoleculeLength;
+		maximumMoleculeLength = 500;
 		
 		%referenceGenome: The name of the reference genome {'hg19','hg18','hg38','mm9',mm8'}. It is used for selecting the annotations folder and defining the chromosomes names.
 		referenceGenome = 'hg19';
@@ -23,7 +23,7 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		binSize = 5000;
 	
 		%contactMapBinSize: bin-size for computing the contact-map.
-		contactMapBinSize = 500000;
+		contactMapBinSize = 100000;
 	
 
 		%%%% -------------------- Annotation Files ---------------------%%
@@ -303,12 +303,27 @@ classdef HiCNAtra < matlab.mixin.Copyable
 				obj.referenceGenome   = referenceGenome;
 				%
 				obj.referenceGenomeFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/UCSC_chromFa/');
-				obj.gcWindsFolder            = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.100/');				
+				%
 				if(readLength >= 100)
 					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_uniqueMappability/globalmap_k101tok101/');
 				else
 					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_uniqueMappability/globalmap_k20tok81/');
 				end
+				%
+				if(readLength >= 200)
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.200/');				
+				elseif(readLength >= 100) 
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.100/');	
+				elseif(readLength >= 76) 
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.76/');	
+				elseif(readLength >= 50) 
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.50/');						
+				elseif(readLength >= 36) 
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.36/');		
+				else
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.27/');						
+				end
+				
 				%				
 				obj.blackListFile	         = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_wgEncodeHg19ConsensusSignalArtifactRegions.bed');
 				obj.centromeresFile          = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/UCSC_Centromeres.txt');	
