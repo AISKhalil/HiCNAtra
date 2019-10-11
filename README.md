@@ -19,7 +19,7 @@ git clone https://github.com/AISKhalil/HiCNAtra.git
 ```
 
 ### <a name="directory_setup"></a>Directory Setup
-After downloading the HiCNAtra directory, `HiCNAtra` annotation files (reference genome sequence, mappability tracks, and GC tracks) should be downloaded and allocated to their corresponding sub-directories inside the **HiCNAtraTool.** directory:
+After downloading the HiCNAtra directory, `HiCNAtra` annotation files (reference genome sequence, mappability tracks, and GC tracks) should be downloaded and allocated to their corresponding sub-directories inside the **HiCNAtraTool** directory:
 
 
 
