@@ -96,9 +96,9 @@ The main analysis parameters of **HiCNAtra**:
     cisOnly                  - a flag to compute and normalize only the cis interaction frequencies (default = 1).
  
 ### <a name="input_preparation"></a>Input Preparation
-    . . .
+. . .
 ### <a name="usage"></a>Usage
-    . . .
+. . .
 
  
 ## HiCNAtra software... Coming soon!  
