@@ -16,6 +16,9 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		%maximumMoleculeLength: Maximum length of molecules in the HiC library, used as a cutoff for dangling ends filter.
 		maximumMoleculeLength;
 		
+		%referenceGenome: The name of the reference genome {'hg19','hg18','hg38','mm9',mm8'}. It is used for selecting the annotations folder and defining the chromosomes names.
+		referenceGenome = 'hg19';
+		
 		%binSize: Number of bases per bin (5Kb is the default bin size which is of the same order of magnitude as the experimental resolution of 6-bp cutter, average 4096 bases for 6-bp cutter.
 		binSize = 5000;
 	
@@ -25,57 +28,52 @@ classdef HiCNAtra < matlab.mixin.Copyable
 
 		%%%% -------------------- Annotation Files ---------------------%%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
-		%referenceGenomeFolder: The folder that contains UCSC sequences files of the reference genome (.Fa files) that is used to calculate the effective-length feature. 
-		%A default hg19-based folder "HiC_Directory+/annotations/hg19/UCSC_referenceGenome/hg19/chromFa/"
+		%referenceGenomeFolder: The folder that contains UCSC sequences files of the reference genome (.Fa files) that is used to calculate the effective-length feature.
+		%A default hg19 folder: ".../gcWinds.readLength.100/"		
 		referenceGenomeFolder;
 
 		%mappabilityFolder: The folder that contains Anshul's uniquely mappability files of the reference genome (.unqiue files)  which can be used to filter highly repeated or unmappable regions. 
-		%A default hg19-based folder "HiC_Directory+/annotations/hg19/Anshul_UniqueMappability/encodeHg19Female/globalmap_k20tok81/" for read-length < 100bp.
-		%A default hg19-based folder "HiC_Directory+/annotations/hg19/Anshul_UniqueMappability/encodeHg19Male/globalmap_k101tok101/" for read-length >= 100bp.
+		%A default hg19-based folder ".../globalmap_k20tok81/" for read-length < 100bp.
+		%A default hg19-based folder ".../globalmap_k101tok101/" for read-length >= 100bp.
 		mappabilityFolder;
 
-		%gcWindsFolder: Folder that contains the Chris Miller's pre-calculated gc-contents per 100 bps at different read lengths. 
-		%A default hg19 folder: HiC_Directory + "/annotations/hg19/ChrisMiller_GCContents/gcWinds.readLength.100/"
+		%gcWindsFolder: Folder that contains the Christopher A. Miller's pre-calculated gc-contents per 100 bps at different read lengths.
+		%A default hg19 folder: ".../gcWinds.readLength.100/"
 		gcWindsFolder;
 
 		%blackListFile: File that includes black-listed regions. 
-		%A default hg19-based file "HiC_Directory+/annotations/hg19/Anshul_BlackListed/wgEncodeHg19ConsensusSignalArtifactRegions.bed".
+		%A default hg19-based file "...Anshul_wgEncodeHg19ConsensusSignalArtifactRegions.bed".
 		blackListFile;
 
-		%gapFile: File that includes unmappable hg19 regions. A default hg19-based file "HiC_Directory+/annotations/hg19/UCSC_gapRegions/gap.txt".		
+		%gapFile: File that includes unmappable hg19 regions. A default hg19-based file "...UCSC_gapRegions.txt".		
 		gapFile;
 
 		%centromeresFile: File that includes locations of centromeres. 
-		%A default hg19 file "HiC_Directory+/annotations/hg19/UCSC_CentromereTelomeres/h19centromeres.txt".
+		%A default hg19 file "...UCSC_Centromeres.txt".
 		centromeresFile;
 
 		%telomeresFile: File that includes locations of telomeres. 
-		%A default hg19 file "HiC_Directory+/annotations/hg19/UCSC_CentromereTelomeres/h19telomeres.txt".
+		%A default hg19 file "...UCSC_Telomeres.txt".
 		telomeresFile;		
+
+		%outputDirectory: Output directory to save results and figures at.
+		outputDirectory = './HiCNAtraOutput';
 
 
 		%%%% ----------------------- Parameters -------------------------%%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%%%%%%%%%%%%
-		%% Biases %%
-		%%%%%%%%%%%%
-		%gcCalculationMethod: 1) the Chris Miller's pre-calculated gc-contents, 2) reference genome.
-		gcCalculationMethod = 1;
-		
 		%%%%%%%%%%%%%%%%%%%%
 		%% RD-calculation %%
 		%%%%%%%%%%%%%%%%%%%%
 		%RDmethod: Method that is used for computing the RD signal. 1) "entire restriction fragment" counting (best for Hi-C data), 2) Paired-end method(best for 3C-seq), 3) Exact-cut position, 4) Mid restriction-fragment mapping.
 		RDmethod = 1;
 
+		%gcCalculationMethod: 1) the Christopher A. Miller's pre-calculated gc-contents, 2) reference genome.
+		gcCalculationMethod = 1;
+
 		%memoryFootPrint: Number of reads that can be loaded per iteration for informative and non-informative reads. User can choose it based on RAM size.
 		memoryFootPrint = 1000000;
-
-		%outputDirectory: Output directory to save results and figures at.
-		outputDirectory = './HiCNAtraOutput';
-
-		%genome: The name of the reference genome {'hg19','hg18','mm9',mm8'}. It is used for defining chromosomes names.
-		genome = 'hg19';
+		
 
 		%%%%%%%%%%%%%%%%%%%%
 		%% Bin-filtering  %%
@@ -295,26 +293,29 @@ classdef HiCNAtra < matlab.mixin.Copyable
 	%%%
 	methods
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Constructor %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		function obj = HiCNAtra(hiclibFiles, HiC_Directory, readLength, restrictionEnzyme, maximumMoleculeLength)
+		function obj = HiCNAtra(hiclibFiles, HiC_Directory, readLength, restrictionEnzyme, maximumMoleculeLength, referenceGenome)
 		%% A pipeline for CNV detection and contact-map normalization of Hi-C/3C-Seq data.
 
-			if nargin == 5
-				obj.HDF5Files = hiclibFiles;
-				obj.readLength = readLength;
+			if nargin == 6
+				obj.HDF5Files         = hiclibFiles;
+				obj.readLength        = readLength;
 				obj.restrictionEnzyme = restrictionEnzyme;
+				obj.referenceGenome   = referenceGenome;
 				%
-				obj.referenceGenomeFolder    = strcat(HiC_Directory,'/annotations/hg19/UCSC_referenceGenome/chromFa/');
-				obj.blackListFile	         = strcat(HiC_Directory,'/annotations/hg19/Anshul_BlackListed/wgEncodeHg19ConsensusSignalArtifactRegions.bed');
-				obj.centromeresFile          = strcat(HiC_Directory,'/annotations/hg19/UCSC_CentromereTelomeres/h19centromeres.txt');	
-				obj.telomeresFile    	     = strcat(HiC_Directory,'/annotations/hg19/UCSC_CentromereTelomeres/h19telomeres.txt');
-				obj.gapFile                  = strcat(HiC_Directory,'/annotations/hg19/UCSC_gapRegions/gap.txt');
-				obj.gcWindsFolder            = strcat(HiC_Directory,'/annotations/hg19/ChrisMiller_GCContents/gcWinds.readLength.100/');
-				%
+				obj.referenceGenomeFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/UCSC_chromFa/');
+				obj.gcWindsFolder            = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.100/');				
 				if(readLength >= 100)
-					obj.mappabilityFolder = strcat(HiC_Directory,'/annotations/hg19/Anshul_UniqueMappability/encodeHg19Male/globalmap_k101tok101/');
+					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_uniqueMappability/globalmap_k101tok101/');
 				else
-					obj.mappabilityFolder = strcat(HiC_Directory,'/annotations/hg19/Anshul_UniqueMappability/encodeHg19Female/globalmap_k20tok81/');
+					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_uniqueMappability/globalmap_k20tok81/');
 				end
+				%				
+				obj.blackListFile	         = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_wgEncodeHg19ConsensusSignalArtifactRegions.bed');
+				obj.centromeresFile          = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/UCSC_Centromeres.txt');	
+				obj.telomeresFile    	     = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/UCSC_Telomeres.txt');
+				obj.gapFile                  = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/UCSC_gapRegions.txt');
+
+				%
 				%
 				obj.maximumMoleculeLength = maximumMoleculeLength;
 				obj.effectiveLengthWindow = obj.maximumMoleculeLength;
@@ -517,8 +518,9 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		rawContactMapPlot(obj, saveResult, varargin) 
 		% Plot normalized interaction-matrix.
 		normContactMapPlot(obj, saveResult, varargin)
-		% Extract Genome-wide interaction-matrix
-		extractGenomeWideMatrix(obj)
+		% Plot Genome-wide interaction-matrix
+		rawGenomeContactMapPlot(obj)
+		normGenomeContactMapPlot(obj)
 
 		% Reads analysis.	
 		plotFragmentLengthHistogram(obj)
