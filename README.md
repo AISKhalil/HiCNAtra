@@ -13,7 +13,10 @@
 - [Usage](#usage)
 
 ## <a name="Download"></a>Download:
-
+```bash
+cd ~
+git clone https://github.com/AISKhalil/HiCNAtra.git
+```
 
 
 
