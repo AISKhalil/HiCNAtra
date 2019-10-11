@@ -12,7 +12,7 @@
 - [Parameters](#parameters)
 - [Usage](#usage)
 
-## <a name="Download"></a>Download Download:
+## <a name="Download"></a>Download:
 
 
 
