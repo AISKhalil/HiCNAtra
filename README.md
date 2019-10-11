@@ -10,6 +10,7 @@
 - [Directory Setup](#directory_setup)
 - [Annotations](#annotations)
 - [Parameters](#parameters)
+- [Input Preparation](#input_preparation)
 - [Usage](#usage)
 
 ### <a name="Download"></a>Download
@@ -66,7 +67,37 @@ Please download and extract the reference genome sequence [hg19 reference genome
 **2)** **HiCNAtra** also uses the unique mappability tracks for computing thr mappability scores that are used for correcting the Hi-C/3C-seq contact map  [Unique mappability tracks for several species](https://sites.google.com/site/anshulkundaje/projects/mappability). This includes per-base unique mappability tracks for a large range of read lengths for several key species [Umap and Bismap: quantifying genome and methylome mappability](https://academic.oup.com/nar/article/46/20/e120/5086676). Please download and extract the mappability tracks [globalmap_k101tok101](https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Male/globalmap_k101tok101.tgz) and [globalmap_k101tok101](https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Female/globalmap_k20tok81.tgz) in `...HiCNAtra/HiCNAtraTool/Annotations/hg19/Anshul_UniqueMappability/` sub-directory.
 
 **3)** **HiCNAtra** uses the GC tracks for computing the GC scores that are used for correcting the Hi-C/3C-seq contact maps [GC tracks](https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/index.html). This includes the GC tracks for a large range of read lengths for human genome [ReadDepth](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0016327). Please download and extract the GC tracks based on the read length [gcWinds.readLength100.hg19](https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength100.hg19.tar), [gcWinds.readLength200.hg19](https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength200.hg19.tar), [gcWinds.readLength76.hg19](https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength76.hg19.tar), [gcWinds.readLength50.hg19](https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength50.hg19.tar), [gcWinds.readLength36.hg19](https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength36.hg19.tar), and [gcWinds.readLength27.hg19](https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength27.hg19.tar) in `...HiCNAtra/HiCNAtraTool/Annotations/hg19/ChrisaMiller_GCContents/` sub-directory.
+  
 
+### <a name="parameters"></a>Parameters
+The main analysis parameters of Hi-C:
+
+    HDF5Files                - the input HDF5 files {'/input/file1.hdf5','/input/file2.hdf5', ..}. 
+                               This HDF5 files are the output of Hiclib tool after running the iterative alignning module.
+   
+    readLength               - the short sequencing read length.
+ 
+    restrictionEnzyme        - the name of the restriction-enzyme that is used for the Hi-C/3C-seq experiment.
+
+    maximumMoleculeLength    - the maximum molecule length (in bps). 
+
+    referenceGenome          - the reference genome (e.g. hg19).
+      
+    binSize                  - the bin size of the RD signal(default = 5Kb).
+
+    contactMapBinSize        - the bin size of the contact map (default = 100 Kb).
+
+    outputDirectory          - the directory that is used for save all CNV information, raw contact map, and corrected contact map.
+
+		RDmethod                 - the method to be used for computing the RD signal. 1) "entire restriction fragment" counting 
+                               (best for Hi-C data), 2) Paired-end method (best for 3C-seq), 3) Exact-cut position, 4) Midpoint 
+                               approach (default = 1).
+    
+    cisOnly                  - a flag to compute and normalize only the cis interaction frequencies (default = 1).
+ 
+### <a name="input_preparation"></a>Input Preparation
+
+### <a name="usage"></a>Usage
 
 
  
