@@ -20,10 +20,44 @@ git clone https://github.com/AISKhalil/HiCNAtra.git
 
 ### <a name="directory_setup"></a>Directory Setup
 After downloading the **HiCNAtra** directory, `HiCNAtra` annotation files (reference genome sequence, mappability tracks, and GC tracks) should be downloaded and allocated to their corresponding sub-directories inside the **HiCNAtraTool** directory:
-f
+- The annotations directory structure will look like this:
 
-
-
+```
+    HiCNAtraTool/
+    +- @HiCNAtra/
+    +- annotations/
+    |  +- hg19/
+    |  |  +- UCSC_chromFa/
+    |  |  |  +- chr1.fa
+    |  |  |  +- chr2.fa
+    |  |  |  +- . . .
+    |  |  |
+    |  |  +- Anshul_UniqueMappability/
+    |  |  |  +- globalmap_k20tok81/
+    |  |  |  |  +- chr1.uint8.unique
+    |  |  |  |  +- chr2.uint8.unique    
+    |  |  |  |  +- . . .
+    |  |  |  |
+    |  |  |  +- globalmap_k101tok101/    
+    |  |  |  +- . . .    
+    |  |  |
+    |  |  +- ChrisaMiller_GCContents/
+    |  |  |  +- gcWinds.readLength.100/
+    |  |  |  |  +- chr1.gc
+    |  |  |  |  +- chr2.gc
+    |  |  |  |  +- . . .    
+    |  |  |  |
+    |  |  |  +- gcWinds.readLength.50/
+    |  |  |  +- . . .    
+    |  |  +- UCSC_Centromeres.txt
+    |  |  +- UCSC_Telomeres.txt
+    |  |  +- UCSC_gapRegions.txt
+    |  |  +- Anshul_wgEncodeHg19ConsensusSignalArtifactRegions.bed
+    |  |  
+    |  +- hg18/
+    |  +- hg28/
+    |  +- . . .
+```
 
 
 ## HiCNAtra software... Coming soon!  
