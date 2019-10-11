@@ -61,7 +61,7 @@ After downloading the **HiCNAtra** directory, `HiCNAtra` annotation files (refer
 
 ### <a name="annotations"></a>Annotations
 **1)** `HiCNAtra` uses the reference genome sequence (e.g. hg19) for computing the effective lengths that are used for correcting the Hi-C/3C-seq contact map based on the experiment (restriction enzyme).
-Please download and extract the reference genome sequence in **..HiCNAtra/HiCNAtraTool/Annotations/hg19/UCSC_chromFa/** : [hg19 reference genome sequence](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz).**
+Please download and extract the reference genome sequence in `..HiCNAtra/HiCNAtraTool/Annotations/hg19/UCSC_chromFa/` : [hg19 reference genome sequence](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz).**
 
 
 
