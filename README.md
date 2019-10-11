@@ -70,7 +70,7 @@ Please download and extract the reference genome sequence [hg19 reference genome
   
 
 ### <a name="parameters"></a>Parameters
-The main analysis parameters of Hi-C:
+The main analysis parameters of **HiCNAtra**:
 
     HDF5Files                - the input HDF5 files {'/input/file1.hdf5','/input/file2.hdf5', ..}. 
                                This HDF5 files are the output of Hiclib tool after running the iterative alignning module.
