@@ -16,17 +16,19 @@ if(obj.toolID == 1)
 		%chromosome-wise
 		cisTransChromosomeWiseNormalization(obj);
 	end
-	%%%
-
+	
 elseif(obj.toolID == 2)
 %%%%%%% HiCnorm %%%%%%%
-	cisTransChromosomeWiseNormalization(obj);
-	%%%
-
+	HiCNormNormalization(obj);
+	
 elseif(obj.toolID == 3)
-%%%%%%% HiCnorm %%%%%%%
+%%%%%%% oneD %%%%%%%
 	oneDNormalization(obj);
-	%%%
+
+elseif(obj.toolID == 4)
+%%%%%%% HiCnorm %%%%%%%
+	OneDplusCnNormalization(obj);
+	
 end
 %%%
 
