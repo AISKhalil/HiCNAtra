@@ -111,7 +111,7 @@ The main analysis parameters of **HiCNAtra**:
    
      
 ### <a name="usage"></a>Usage
-Here, we use GM06990 small sample as an example [GM06990_GSM455133](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133). GM06990 HDF5 input file [GM06990_SRR027956_Input.hdf5](Example\GM06990_SRR027956_Input.hdf5) is uploaded in `Example\` sub-directory.  
+Here, we use GM06990 small sample as an example [GM06990_GSM455133](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133). GM06990 HDF5 input file [GM06990_SRR027956_Input.hdf5](Example/GM06990_SRR027956_Input.hdf5) is uploaded in `Example\` sub-directory.  
 Start Matlab, then edit and run the following set of commands based on your data [runHiCNAtraScript.m](./Scripts/runHiCNAtraScript.m).
 ```
 % Test
