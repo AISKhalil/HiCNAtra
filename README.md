@@ -127,4 +127,4 @@ Start Matlab, then edit and run the following set of commands based on your data
 
 
  
-## HiCNAtra software... Coming soon!  
+## HiCNAtra user manual . . . Coming soon!  
