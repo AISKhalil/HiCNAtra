@@ -60,7 +60,7 @@ def convertFile(filename,outFilename):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage : python h5dictToReadableHDF5.py in_h5dict_file out_hdf5_file")
+        print("Usage : python h5dictToHDF5.py in_h5dict_file out_hdf5_file")
         print("Converts h5dict file to a hdf5 file")
         print("Keys ('chrms1', 'chrms2', 'cuts1', 'cuts2', 'rfragIdxs1', 'rfragIdxs2', 'strands1', 'strands2','rsites1','rsites2') are kept ib the out_hdf5_file for HiCNAtra usage")
         exit()
