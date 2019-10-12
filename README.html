@@ -408,12 +408,12 @@ git clone https://github.com/AISKhalil/HiCNAtra.git</code></pre>
     |  |  |  +- . . .    
     |  |  |
     |  |  +- ChrisaMiller_GCContents/
-    |  |  |  +- gcWinds.readLength.100/
+    |  |  |  +- gcWinds.readLength100/
     |  |  |  |  +- chr1.gc
     |  |  |  |  +- chr2.gc
     |  |  |  |  +- . . .    
     |  |  |  |
-    |  |  |  +- gcWinds.readLength.50/
+    |  |  |  +- gcWinds.readLength50/
     |  |  |  +- . . .    
     |  |  +- UCSC_Centromeres.txt
     |  |  +- UCSC_Telomeres.txt
@@ -428,8 +428,8 @@ git clone https://github.com/AISKhalil/HiCNAtra.git</code></pre>
 <h3><a name="annotations"></a>Annotations</h3>
 <ul>
 <li><p><strong>HiCNAtra</strong> uses the reference genome sequence (e.g. hg19) for computing the effective lengths that are used for correcting the Hi-C/3C-seq contact map based on the experiment (restriction enzyme). Please download and extract the reference genome sequence <a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz">hg19 reference genome sequence</a> in <code>...HiCNAtra/HiCNAtraTool/Annotations/hg19/UCSC_chromFa/</code> sub-directory.</p></li>
-<li><p>It also uses the unique mappability tracks for computing thr mappability scores that are used for correcting the Hi-C/3C-seq contact map <a href="https://sites.google.com/site/anshulkundaje/projects/mappability">Unique mappability tracks for several species</a>. This includes per-base unique mappability tracks for a large range of read lengths for several key species <a href="https://academic.oup.com/nar/article/46/20/e120/5086676">Umap and Bismap: quantifying genome and methylome mappability</a>. Please download and extract the mappability tracks <a href="https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Male/globalmap_k101tok101.tgz">globalmap_k101tok101</a> and <a href="https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Female/globalmap_k20tok81.tgz">globalmap_k20tok81</a> in <code>...HiCNAtra/HiCNAtraTool/Annotations/hg19/Anshul_UniqueMappability/</code> sub-directory.</p></li>
-<li><p>Additionally, it uses the GC tracks for computing the GC scores that are used for correcting the Hi-C/3C-seq contact maps <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/index.html">GC tracks</a>. This includes the GC tracks for a large range of read lengths for human genome <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0016327">ReadDepth</a>. Please download and extract the GC tracks based on the read length <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength100.hg19.tar">gcWinds.readLength100.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength200.hg19.tar">gcWinds.readLength200.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength76.hg19.tar">gcWinds.readLength76.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength50.hg19.tar">gcWinds.readLength50.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength36.hg19.tar">gcWinds.readLength36.hg19</a>, and <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength27.hg19.tar">gcWinds.readLength27.hg19</a> in <code>...HiCNAtra/HiCNAtraTool/Annotations/hg19/ChrisaMiller_GCContents/</code> sub-directory.</p></li>
+<li><p><strong>HiCNAtra</strong> also uses the unique mappability tracks for computing thr mappability scores that are used for correcting the Hi-C/3C-seq contact map <a href="https://sites.google.com/site/anshulkundaje/projects/mappability">Unique mappability tracks for several species</a>. This includes per-base unique mappability tracks for a large range of read lengths for several key species <a href="https://academic.oup.com/nar/article/46/20/e120/5086676">Umap and Bismap: quantifying genome and methylome mappability</a>. Please download and extract the mappability tracks <a href="https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Male/globalmap_k101tok101.tgz">globalmap_k101tok101</a> and <a href="https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Female/globalmap_k20tok81.tgz">globalmap_k20tok81</a> in <code>...HiCNAtra/HiCNAtraTool/Annotations/hg19/Anshul_UniqueMappability/</code> sub-directory.</p></li>
+<li><p>Additionally, <strong>HiCNAtra</strong> computes the GC score, for correcting the Hi-C/3C-seq contact maps, from the reference genome sequence (e.g. hg19). Alteratively, <strong>HiCNAtra</strong> has the option to use the Chris Miller’s GC tracks <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/index.html">GC tracks</a>. This includes the GC tracks for a large range of read lengths for human genome <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0016327">ReadDepth</a>. Please download and extract the GC tracks based on the read length <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength100.hg19.tar">gcWinds.readLength100.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength200.hg19.tar">gcWinds.readLength200.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength76.hg19.tar">gcWinds.readLength76.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength50.hg19.tar">gcWinds.readLength50.hg19</a>, <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength36.hg19.tar">gcWinds.readLength36.hg19</a>, and <a href="https://xfer.genome.wustl.edu/gxfer1/project/cancer-genomics/readDepth/gcWinds.readLength27.hg19.tar">gcWinds.readLength27.hg19</a> in <code>...HiCNAtra/HiCNAtraTool/Annotations/hg19/ChrisaMiller_GCContents/</code> sub-directory. User can select the GC calculation method by setting the <code>gcCalculationMethod</code> parameter.</p></li>
 </ul>
 </div>
 <div id="input-preparation" class="section level3">
@@ -460,7 +460,7 @@ referenceGenome          - the reference genome (e.g. hg19).
   
 binSize                  - the bin size of the RD signal(default = 5Kb).
 
-contactMapBinSize        - the bin size of the contact map (default = 100 Kb).
+contactMapBinSize        - the bin size of the contact map (default = 100Kb).
 
 outputDirectory          - the directory that is used for save all CNV information, raw contact map, and corrected contact map.
 
@@ -468,12 +468,18 @@ RDmethod                 - the method to be used for computing the RD signal. 1)
                            (best for Hi-C data), 2) Paired-end method (best for 3C-seq), 3) Exact-cut position, 4) Midpoint 
                            approach (default = 1).
 
+gcCalculationMethod      - the method to be used for computing the GC scores: (1) from Christopher A. Miller's pre-calculated GC tracks, 
+                           (2) from the reference genome sequence (default = 2).
+                           
+ploidyLevel              - the whole-genome ploidy level of the cell line {'diploid', 'triploid', 'tetraploid', 'free'(default)}.
+
 cisOnly                  - a flag to compute and normalize only the cis interaction frequencies (default = 1).</code></pre>
 </div>
 <div id="usage" class="section level3">
 <h3><a name="usage"></a>Usage</h3>
-<p>Here, we use GM06990 small sample as an example <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133">GM06990_GSM455133</a>. GM06990 HDF5 input file <a href="Example/GM06990_SRR027956_Input.hdf5">GM06990_SRR027956_Input.hdf5</a> is uploaded in <code>Example/</code> sub-directory.<br />
-Start Matlab, then edit and run the following set of commands based on your data <a href="./Scripts/runHiCNAtraScript.m">runHiCNAtraScript.m</a>.</p>
+<p>Here, we use GM06990 small sample as an example <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133">GM06990_GSM455133</a>. GM06990 HDF5 input file <a href="Example/GM06990_SRR027956_Input.hdf5">GM06990_SRR027956_Input.hdf5</a> is in <code>Example/</code> sub-directory. Output files are saved in <code>Example/GM06990_HiC</code> sub-directory.</p>
+<p><strong>N.B.</strong> this GM06990 sample has only ~5 million reads, we use it for testing the HiCNAtra installation. For accurate analysis, you can incorporate more biological replicates <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE18199">GSE18199</a>.</p>
+<p>Start Matlab, then edit and run the following set of commands based on your data <a href="./Scripts/runHiCNAtraScript.m">runHiCNAtraScript.m</a>.</p>
 <pre><code>% Define the required information for creating HiCNAtra object based on the experiment and reference genome 
 restrictionEnzyme = 'hindIII';
 maximumMoleculeLength = 500;
@@ -491,20 +497,34 @@ HDF5Files = {'Example/GM06990_SRR027956_Input.hdf5'};
 GM06990_HiC = HiCNAtra(HDF5Files, HiCNAtraDirectory, readLength, restrictionEnzyme, maximumMoleculeLength, referenceGenome);
 
 % Set more parameters (optional)
-GM06990_HiC.binSize = 500000;
-GM06990_HiC.outputDirectory = './GM06690_HiC';
+GM06990_HiC.contactMapBinSize = 500000;
+GM06990_HiC.ploidyLevel = 'diploid';
+GM06990_HiC.outputDirectory = 'Example/GM06690_HiC';
 
-% Pipeline (1) run 'RD calculator'  module
+% run 'RD calculator' module (Pipeline stage 1)
 GM06990_HiC.RDcalculator;
 
-% Pipeline (2) run 'CNV caller' module
+% run 'CNV caller' module (Pipeline stage 2)
+GM06990_HiC.ploidyLevel = 'diploid';
 GM06990_HiC.CNVcaller;
 
-% Pipeline (3) run 'contact map corrector' module that compute and correct the contact map
+% run 'contact map corrector' (Pipeline stage 3) module that compute and correct the contact map
 GM06990_HiC.contactMapCorrector;
 
-% save the HiCNAtraObject, so you can load it directly next time.
-save('GM06990_HiC.mat');
+% save the HiCNAtraObject, so you can load it directly for further analysis.
+save('Example/GM06990_HiC.mat');
+
+% plot the CNV tracks (e.g chr11)
+chrNumber = 11;
+GM06990_HiC.CNVsTrackPlot('plot',chrNumber);
+
+% plot the raw contact map (e.g. chr1 )
+chrNumber = 1;
+GM06990_HiC.rawContactMapPlot('plot',chrNumber);
+
+% plot the HiCNAtra-corrected contact map (e.g. chr1 )
+chrNumber = 1;
+GM06990_HiC.normContactMapPlot('plot',chrNumber); 
 </code></pre>
 </div>
 </div>
