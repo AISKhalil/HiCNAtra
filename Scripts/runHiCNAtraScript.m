@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% GM06690_HiC 					   %%
+%% GM06690_HiC 			   %%
 %% GEO-Accession : GSM455133 	   %%
 %% RefernceGenome: hg19            %%
 %% Restirciton-Enzyme: hindIII	   %%
