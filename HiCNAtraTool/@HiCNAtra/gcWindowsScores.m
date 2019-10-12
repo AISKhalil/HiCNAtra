@@ -82,7 +82,7 @@ for i  = 1:1:noChrs
     % UCSC reference genome %
     elseif(gcCalculationMethod == 2)
 
-        FASTAfileName = strcat(referenceGenomeFolder, chromosome, '.fa');
+        FASTAfileName = strcat(referenceGenomeFolder, chromosome, '.fa')
         fidIn = fopen(FASTAfileName,'r');
         rawData = fread(fidIn,'*char')';
         fclose(fidIn);
