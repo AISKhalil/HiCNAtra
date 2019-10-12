@@ -100,7 +100,7 @@ The main analysis parameters of **HiCNAtra**:
 
   - **(1)** install the [hiclib](https://mirnylab.bitbucket.io/hiclib/index.html?).  
   - **(2)** edit the iterative mapping module based on the read length and restriction enzyme information [Mapping.py](./Scripts/Mapping.py) 
-
+` python Mapping.py -i inputFastQFile -o outputFileName`
 
 
 after applying the iterative-mapping technique
