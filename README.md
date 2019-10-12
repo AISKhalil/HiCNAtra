@@ -111,7 +111,20 @@ The main analysis parameters of **HiCNAtra**:
    
      
 ### <a name="usage"></a>Usage
-. . .
+Start Matlab, then edit and run the following set of commands based on your data [runHiCNAtraScript.m](./Scripts/runHiCNAtraScript.m) :
+```
+% 
+
+%
+
+%
+
+%
+
+%
+
+```
+
 
  
 ## HiCNAtra software... Coming soon!  
