@@ -117,9 +117,9 @@ The main analysis parameters of **HiCNAtra**:
    
      
 ### <a name="usage"></a>Usage 
-Here, we use **GM06990** small sample as an example [GSM455133](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133). GM06990 HDF5 input file [GM06990_SRR027956_Input.hdf5](Example/GM06990_SRR027956_Input.hdf5) is in `Example/` sub-directory. Output files are saved in `Example/GM06990_HiC` sub-directory.   
+Here, we use **GM06990** small sample as an example [GSM455133](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133). The input HDF5 file [GM06990_SRR027956_Input.hdf5](Example/GM06990_SRR027956_Input.hdf5) is provided in `Example/` sub-directory. Output files are saved in `Example/GM06990_HiC` sub-directory.   
    
-**N.B.** this GM06990 sample has only ~5 million reads, we use it for testing the HiCNAtra installation. For accurate analysis, you can incorporate more biological replicates [GSE18199](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE18199).
+**N.B.** this sample has only ~5 million reads, we use it for testing the HiCNAtra installation. For accurate analysis, you can incorporate more biological replicates [GSE18199](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE18199).
    
 Start Matlab, then edit and run the following set of commands based on your data [runHiCNAtraScript.m](./Scripts/runHiCNAtraScript.m).
 ```
