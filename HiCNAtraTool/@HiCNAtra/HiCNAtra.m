@@ -502,7 +502,7 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		% 1) computing the 3D contact-map,
 		% 2) normalizing the contact-map. 
-		contactMapCalculator(obj)
+		contactMapCorrector(obj)
 		%
 		contactMapComputing(obj)
 		contactMapBiasExtraction(obj)

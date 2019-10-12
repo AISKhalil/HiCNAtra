@@ -1,6 +1,6 @@
 # HiCNAtra: An analytical and visualization tool for CNV discovery and contact map correction of Hi-C/3C-seq data of cancer cell lines. 
 
-**HiCNAtra** is a MATLAB-based tool that accepts HDF5 files, the output of [hiclib](https://mirnylab.bitbucket.io/hiclib/index.html?) after applying the iterative-mapping technique, as input. **HiCNAtra** pipeline is divided into three modules: 1) computation of the read depth (RD) signal from Hi-C or 3C-seq reads (RD calculator), 2) RD-based detection of copy number events based on [CNAtra](https://github.com/AISKhalil/CNAtra) approach (CNV caller) and 3) bias correction of chromatin interaction matrix introduced by CNVs and other systematic biases (Contact map normalization).  
+**HiCNAtra** is a MATLAB-based tool that accepts HDF5 files, the output of [hiclib](https://mirnylab.bitbucket.io/hiclib/index.html?) after applying the iterative-mapping technique, as input. **HiCNAtra** pipeline is divided into three modules: 1) computation of the read depth (RD) signal from Hi-C or 3C-seq reads (RD calculator), 2) RD-based detection of copy number events based on [CNAtra](https://github.com/AISKhalil/CNAtra) approach (CNV caller) and 3) bias correction of chromatin interaction matrix introduced by CNVs and other systematic biases (Contact map corrector).  
 **HiCNAtra** generates many output files providing the detailed characterization of the copy number profile, the raw contact map, and the HiCNAtra-corrected contact map of the input Hi-C/3C-seq data. It saves BED format files of both large-scale copy number variations (LCVs) and focal alterations (FAs) that can be uploaded into UCSC Genome Browser. Also, it saves text files of the cis and trans interaction frequencies before and after HiCNAtra correction.  
 **HiCNAtra** also provides a visual platform that allows manual review of the CNV profile and the contact maps pre- and post-normalization. The detailed description of HiCNAtra inputs, parameters, methods, and outputs will be provided in **"HiCNAtra_User_Guide.pdf"** file.  
 **For a full description of the method and applications, please visit [HiCNAtra Manuscript](https://www.biorxiv.org/content/10.1101/798710v1).**
@@ -111,21 +111,41 @@ The main analysis parameters of **HiCNAtra**:
    
      
 ### <a name="usage"></a>Usage
-Here, we use GM06990 small sample as an example [GM06990_GSM455133](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133). GM06990 HDF5 input file [GM06990_SRR027956_Input.hdf5](Example/GM06990_SRR027956_Input.hdf5) is uploaded in `Example\` sub-directory.  
+Here, we use GM06990 small sample as an example [GM06990_GSM455133](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM455133). GM06990 HDF5 input file [GM06990_SRR027956_Input.hdf5](Example/GM06990_SRR027956_Input.hdf5) is uploaded in `Example/` sub-directory.  
 Start Matlab, then edit and run the following set of commands based on your data [runHiCNAtraScript.m](./Scripts/runHiCNAtraScript.m).
 ```
-% Test
+% Define the required information for creating HiCNAtra object based on the experiment and reference genome 
+restrictionEnzyme = 'hindIII';
+maximumMoleculeLength = 500;
+readLength = 76;
+referenceGenome = 'hg19';
 
-% Test2
+% Add 'HiCNAtraTool' directory to Matlab search path
+HiCNAtraDirectory = 'HiCNAtraTool';
+addpath(HiCNAtraDirectory);
 
-%
+% Define the input HDF5 file(s)
+HDF5Files = {'Example/GM06990_SRR027956_Input.hdf5'};
 
-%
+% Create HiCNAtra object 'GM06990_HiC' with the defined parameters
+GM06990_HiC = HiCNAtra(HDF5Files, HiCNAtraDirectory, readLength, restrictionEnzyme, maximumMoleculeLength, referenceGenome);
 
-%
+% Set more parameters (optional)
+GM06990_HiC.binSize = 500000;
+GM06990_HiC.outputDirectory = './GM06690_HiC';
+
+% run 'RD calculator' module (Pipeline stage 1)
+GM06990_HiC.RDcalculator;
+
+% run 'CNV caller' module (Pipeline stage 2)
+GM06990_HiC.CNVcaller;
+
+% run 'contact map corrector' (Pipeline stage 3) module that compute and correct the contact map
+GM06990_HiC.contactMapCorrector;
+
+% save the HiCNAtraObject, so you can load it directly next time.
+save('GM06990_HiC.mat');
 
 ```
 
-
- 
 ## HiCNAtra user manual . . . Coming soon!  

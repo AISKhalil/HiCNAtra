@@ -1,4 +1,4 @@
-function obj = contactMapCalculator(obj)
+function obj = contactMapCorrector(obj)
 %%%%%%%%
 contactMapComputing(obj);
 contactMapBiasExtraction(obj);
