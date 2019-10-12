@@ -102,7 +102,7 @@ The main analysis parameters of **HiCNAtra**:
   - **(2)** edit the iterative mapping module based on the read length and restriction enzyme information [Mapping.py](./Scripts/Mapping.py) 
 ` python ./Scripts/Mapping.py -i inputFastQFilePath -o outputFileName`
   - **(3)** extract the main keys of Hi-C data and convert from `h5dict` to `HDF5` format that can be read by HiCNAtra using . edit the iterative mapping module based on the read length and restriction enzyme information [h5dictToHDF5.py](./Scripts/h5dictToHDF5.py) 
-` python ./Scripts/Mapping.py -i inputFastQFilePath -o outputFileName`
+` python ./Scripts/h5dictToHDF5.py -i inputDictFile -o outputDictFile`
 
 
 
