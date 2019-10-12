@@ -16,7 +16,7 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		%maximumMoleculeLength: Maximum length of molecules in the HiC library, used as a cutoff for dangling ends filter.
 		maximumMoleculeLength = 500;
 		
-		%referenceGenome: The name of the reference genome {'hg19','hg18','hg38','mm9',mm8'}. It is used for selecting the annotations folder and defining the chromosomes names.
+		%referenceGenome: The name of the reference genome {'hg19','hg18','hg38','mm9','mm8'}. It is used for selecting the annotations folder and defining the chromosomes names.
 		referenceGenome = 'hg19';
 		
 		%binSize: Number of bases per bin (5Kb is the default bin size which is of the same order of magnitude as the experimental resolution of 6-bp cutter, average 4096 bases for 6-bp cutter.
@@ -38,7 +38,7 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		mappabilityFolder;
 
 		%gcWindsFolder: Folder that contains the Christopher A. Miller's pre-calculated gc-contents per 100 bps at different read lengths.
-		%A default hg19 folder: ".../gcWinds.readLength.100/"
+		%A default hg19 folder: ".../gcWinds.readLength100/"
 		gcWindsFolder;
 
 		%blackListFile: File that includes black-listed regions. 
@@ -68,8 +68,8 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		%RDmethod: Method that is used for computing the RD signal. 1) "entire restriction fragment" counting (best for Hi-C data), 2) Paired-end method(best for 3C-seq), 3) Exact-cut position, 4) Mid restriction-fragment mapping.
 		RDmethod = 1;
 
-		%gcCalculationMethod: 1) the Christopher A. Miller's pre-calculated gc-contents, 2) reference genome.
-		gcCalculationMethod = 1;
+		%gcCalculationMethod: (1) the Christopher A. Miller's pre-calculated gc-contents, (2) reference genome sequence.
+		gcCalculationMethod = 2;
 
 		%memoryFootPrint: Number of reads that can be loaded per iteration for informative and non-informative reads. User can choose it based on RAM size.
 		memoryFootPrint = 1000000;
@@ -305,23 +305,23 @@ classdef HiCNAtra < matlab.mixin.Copyable
 				obj.referenceGenomeFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/UCSC_chromFa/');
 				%
 				if(readLength >= 100)
-					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_uniqueMappability/globalmap_k101tok101/');
+					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_UniqueMappability/globalmap_k101tok101/');
 				else
-					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_uniqueMappability/globalmap_k20tok81/');
+					obj.mappabilityFolder    = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/Anshul_UniqueMappability/globalmap_k20tok81/');
 				end
 				%
 				if(readLength >= 200)
-					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.200/');				
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength200/');				
 				elseif(readLength >= 100) 
-					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.100/');	
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength100/');	
 				elseif(readLength >= 76) 
-					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.76/');	
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength76/');	
 				elseif(readLength >= 50) 
-					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.50/');						
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength50/');						
 				elseif(readLength >= 36) 
-					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.36/');		
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength36/');		
 				else
-					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength.27/');						
+					obj.gcWindsFolder        = strcat(HiC_Directory, '/Annotations/', referenceGenome, '/ChrisaMiller_GCContents/gcWinds.readLength27/');						
 				end
 				
 				%				

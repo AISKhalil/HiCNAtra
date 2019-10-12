@@ -1,0 +1,8 @@
+Segment-Number       Start-Bin(Kb)        Stop-Bin(Kb)         Segment-Width(Kb)    Copy-Number          
+1                    1                    38190                38190                1.993560       
+--------------------------------------------------------------------------------------------
+	ID    Start(bp)    Stop(bp)     Width(bp)    Copy-Number Type       SegmentEdge Distance(Kb) Centro/Telo Distance(Kb) 
+	1     3870000      4309999      440000       0.77221    Deletion 	 	 3870000              3835000              
+	2     8915000      9749999      835000       0.53308    Deletion 	 	 8915000              8880000              
+	3     144710000    145074999    365000       0.80152    Deletion 	 	 45875000             45895000             
+

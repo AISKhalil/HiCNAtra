@@ -24,17 +24,31 @@ HDF5Files = {'Example/GM06990_SRR027956_Input.hdf5'};
 GM06990_HiC = HiCNAtra(HDF5Files, HiCNAtraDirectory, readLength, restrictionEnzyme, maximumMoleculeLength, referenceGenome);
 
 % Set more parameters (optional)
-GM06990_HiC.binSize = 500000;
-GM06990_HiC.outputDirectory = './GM06690_HiC';
+GM06990_HiC.contactMapBinSize = 500000;
+GM06990_HiC.ploidyLevel = 'diploid';
+GM06990_HiC.outputDirectory = 'Example/GM06690_HiC';
 
 % run 'RD calculator' module (Pipeline stage 1)
 GM06990_HiC.RDcalculator;
 
 % run 'CNV caller' module (Pipeline stage 2)
+GM06990_HiC.ploidyLevel = 'diploid';
 GM06990_HiC.CNVcaller;
 
 % run 'contact map corrector' (Pipeline stage 3) module that compute and correct the contact map
 GM06990_HiC.contactMapCorrector;
 
-% save the HiCNAtraObject, so you can load it directly next time.
-save('GM06990_HiC.mat');
+% save the HiCNAtraObject, so you can load it directly for further analysis.
+save('Example/GM06990_HiC.mat');
+
+% plot the CNV tracks (e.g chr11)
+chrNumber = 11;
+GM06990_HiC.CNVsTrackPlot('plot',chrNumber);
+
+% plot the raw contact map (e.g. chr1 )
+chrNumber = 1;
+GM06990_HiC.rawContactMapPlot('plot',chrNumber);
+
+% plot the HiCNAtra-corrected contact map (e.g. chr1 )
+chrNumber = 1;
+GM06990_HiC.normContactMapPlot('plot',chrNumber);

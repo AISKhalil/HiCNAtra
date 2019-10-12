@@ -67,7 +67,7 @@ chr2Length      = ceil(chr2LengthBps/binSize);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if(strcmp(saveResult,'save')== 1)
 	saveResult = 1;
-	targetChrIndex = chr1Index + 23*chr2Index;
+	targetChrIndex = chr1No + 23*chr2No;
 	figure(targetChrIndex);
 	set(gcf, 'Position', [1 1 round(1000*chr2Length/chr1Length)+100 1000]);
 	set(gcf,'Renderer','painters');

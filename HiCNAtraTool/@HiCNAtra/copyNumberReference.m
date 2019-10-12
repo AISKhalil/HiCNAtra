@@ -22,7 +22,7 @@ end
 RDDist = formDistribution(ploidyLevel);
 
 %%%%%%%%%% Copy-Number Reference %%%%%%%%%%
-n = round(100000/obj.binSize);
+n = min(round(100000/obj.binSize),1);
 data = signal(signal ~= 0);
 lowerLimit = prctile(data,1);
 upperLimit = prctile(data,99);
@@ -78,8 +78,8 @@ elseif(strcmp(ploidyLevel,'tetraploid'))
 	RDDist = @(x)(c*(a3*normpdf(x,2,sigma)+a2*normpdf(x,3,sigma)+a1*normpdf(x,4,sigma)+a2*normpdf(x,5,sigma)+a3*normpdf(x,6,sigma)));
 else
 	disp('Free-model is used for estimating the copy-number reference')	
-	c = 1/(a1 + a1 + a1 + a1 + a1 + a1);
-	RDDist = @(x)(c*(a1*normpdf(x,1,sigma)+a1*normpdf(x,2,sigma)+a1*normpdf(x,3,sigma)+a1*normpdf(x,4,sigma)+a1*normpdf(x,5,sigma)+a1*normpdf(x,6,sigma)));
+	c = 1/(a1 + a1 + a1 + a1 + a1);
+	RDDist = @(x)(c*(a1*normpdf(x,2,sigma)+a1*normpdf(x,3,sigma)+a1*normpdf(x,4,sigma)+a1*normpdf(x,5,sigma)+a1*normpdf(x,6,sigma)));
 end
 %%%
 end
