@@ -22,7 +22,7 @@ git clone https://github.com/AISKhalil/HiCNAtra.git
    
      
 ### <a name="directory_setup"></a>Directory Setup
-After downloading the **HiCNAtra** directory, `HiCNAtra` annotation files (reference genome sequence, mappability tracks, and GC tracks) should be downloaded and allocated to their corresponding sub-directories inside the **HiCNAtraTool** directory:
+After downloading the **HiCNAtra** directory, all the annotation files (reference genome sequence, mappability track, and GC track) should be downloaded and allocated to their corresponding sub-directories inside the **HiCNAtraTool** directory:
 - The annotations directory structure will look like this:
 
 ```
@@ -87,32 +87,33 @@ User can select the GC calculation method by setting the `gcCalculationMethod` p
 The main analysis parameters of **HiCNAtra**:
 
     HDF5Files                - the input HDF5 files {'/input/file1.hdf5','/input/file2.hdf5', ..}. 
-                               This HDF5 files are the output of Hiclib tool after running the iterative alignning module.
+                               This HDF5 files are the output of hiclib tool after running the iterative aligning module.
    
     readLength               - the short sequencing read length.
  
-    restrictionEnzyme        - the name of the restriction-enzyme that is used for the Hi-C/3C-seq experiment.
+    restrictionEnzyme        - the name of the restriction enzyme that is used for the Hi-C/3C-seq experiment.
 
     maximumMoleculeLength    - the maximum molecule length (in bps). 
 
     referenceGenome          - the reference genome (e.g. hg19).
       
-    binSize                  - the bin size of the RD signal(default = 5Kb).
+    binSize                  - the bin size of the RD signal (default = 5Kb).
 
     contactMapBinSize        - the bin size of the contact map (default = 100Kb).
 
-    outputDirectory          - the directory that is used for save all CNV information, raw contact map, and corrected contact map.
+    outputDirectory          - the directory that is used for saving all CNV information, raw contact map, and corrected contact map.
 
-    RDmethod                 - the method to be used for computing the RD signal. 1) "entire restriction fragment" counting 
-                               (best for Hi-C data), 2) Paired-end method (best for 3C-seq), 3) Exact-cut position, 4) Midpoint 
-                               approach (default = 1).
+    RDmethod                 - the method to be used for computing the RD signal (default = 1): (1) "entire restriction fragment"
+                               counting (for Hi-C data), (2) Paired-end method (for 3C-seq), (3) Exact-cut (position) approach,
+                               (4) Midpoint (of restriction fragment) approach.
     
-    gcCalculationMethod      - the method to be used for computing the GC scores: (1) from Christopher A. Miller's pre-calculated GC tracks, 
-                               (2) from the reference genome sequence (default = 2).
+    gcCalculationMethod      - the method to be used for computing the GC scores (default = 2): (1) from Christopher A. Miller's 
+                               pre-calculated GC tracks, (2) from the reference genome sequence.
                                
     ploidyLevel              - the whole-genome ploidy level of the cell line {'diploid', 'triploid', 'tetraploid', 'free'(default)}.
     
-    cisOnly                  - a flag to compute and normalize only the cis interaction frequencies (default = 1).
+    cisOnly                  - a flag to compute and normalize the cis interaction frequencies only (cisOnly = 1), or both cis and trans 
+                               interaction frequencies (cisOnly = 0).
  
    
      
