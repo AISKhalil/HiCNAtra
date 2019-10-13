@@ -64,7 +64,7 @@ After downloading the **HiCNAtra** directory, `HiCNAtra` annotation files (refer
   
   
 ### <a name="annotations"></a>Annotations
-- **HiCNAtra** uses the reference genome sequence (e.g. hg19) for computing the effective lengths that are used for correcting the Hi-C/3C-seq contact map based on the experiment (restriction enzyme).
+- **HiCNAtra** uses the reference genome sequence (e.g. hg19) for computing the effective (restriction fragment) lengths that are used for correcting the Hi-C/3C-seq contact map based on the experiment (choice of restriction enzyme).
 Please download and extract the reference genome sequence [hg19 reference genome sequence](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz) in `...HiCNAtra/HiCNAtraTool/Annotations/hg19/UCSC_chromFa/` sub-directory. 
   
 - **HiCNAtra** also uses the unique mappability tracks for computing thr mappability scores that are used for correcting the Hi-C/3C-seq contact map  [Unique mappability tracks for several species](https://sites.google.com/site/anshulkundaje/projects/mappability). This includes per-base unique mappability tracks for a large range of read lengths for several key species [Umap and Bismap: quantifying genome and methylome mappability](https://academic.oup.com/nar/article/46/20/e120/5086676). Please download and extract the mappability tracks [globalmap_k101tok101](https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Male/globalmap_k101tok101.tgz) and [globalmap_k20tok81](https://personal.broadinstitute.org/anshul/projects/umap/encodeHg19Female/globalmap_k20tok81.tgz) in `...HiCNAtra/HiCNAtraTool/Annotations/hg19/Anshul_UniqueMappability/` sub-directory.
