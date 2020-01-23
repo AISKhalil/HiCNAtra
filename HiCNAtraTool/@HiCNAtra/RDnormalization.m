@@ -166,8 +166,9 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [correctionRatioVec] = intervalNormalization(RD, gc)
 
+%
 correctionRatioVec = ones(length(RD),1);
-rdGlobal = median(RD);
+rdGlobal = nanmedian(RD);
 %
 minGC = min(gc);
 maxGC = max(gc);
@@ -179,9 +180,9 @@ for j = 1:noIntervals
 	if(sum(intervalIndex)>1)
 	   intervalData    = RD(intervalIndex);
 	   intervalLength  = length(intervalData);
-	   intervalRDMedian  = median(intervalData);
+	   intervalRDMedian  = nanmedian(intervalData);
 	   correctionRatio = rdGlobal/intervalRDMedian;
-	   if(intervalLength == 0)
+	   if(intervalLength == 0 || intervalRDMedian == 0)
 		intervalDataMod = 1;
 	   else
 		intervalDataMod = correctionRatio;
@@ -190,4 +191,5 @@ for j = 1:noIntervals
 	end 
 end 
 %%%
+
 end
