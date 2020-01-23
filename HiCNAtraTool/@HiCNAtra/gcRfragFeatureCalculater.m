@@ -88,7 +88,7 @@ for i  = 1:1:noChrs
 
 	%%% GC score per restriction-fragment.
         gcWindsWindowLeft  = max([chrRsites - gcWindow, chrRsites-1],1);
-        gcWindsWindowRight = min([chrRsites, chrRsites + gcWindow - 1], chrLengthBps);       
+        gcWindsWindowRight = min([chrRsites, chrRsites + gcWindow - 1], chrLengthBps); 
         [rfragGCScore] = rfragScoringFromSequence(chrSequence, chrRsites, gcWindsWindowLeft, gcWindsWindowRight, gcWindow, chrLengthBps);
         rfragGCScoreDict(chrIndex) = rfragGCScore;
 
@@ -97,7 +97,6 @@ end
 
 %%% GC-score per bin.
 obj.chrGCTracks = RDsignalfromRfrag(rfragGCScoreDict, rsites, chrLengths, binSize, noChrs, chromosomes,largeRfrags);
-
 
 end
 %%%
@@ -221,7 +220,7 @@ for i = 2:noRfragments-1
 		w2Start  = w2Array(wIndex,1);
 		w2End    = w2Array(wIndex,2);
 		%
-		wData    = [data(w1Start:w1End);data(w2Start:w2End)];
+		wData    = [data(w1Start:w1End),data(w2Start:w2End)];
 		rfragScore(i) = rfragGCRatio(wData);  
 	else
 		%rFrag contains two overlapped complete windows 
