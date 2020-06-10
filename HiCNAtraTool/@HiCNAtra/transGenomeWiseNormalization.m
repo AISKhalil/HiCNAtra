@@ -50,7 +50,7 @@ for i  = 1:1:noChrs
 	for j = i+1:1:noChrs
 		%
 		chr2Index = chromosomes(j);
-		chr2LengthBps  = chrLengths(chr1Index);
+		chr2LengthBps  = chrLengths(chr2Index);
 		chr2LengthBins  = ceil(chr2LengthBps/binSize);
 				
 				
@@ -134,10 +134,10 @@ for i  = 1:1:noChrs
 	chr1LengthBps   = chrLengths(chr1Index);
 	chr1LengthBins  = ceil(chr1LengthBps/binSize);
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		j = i;
+	for j = i+1:1:noChrs
 		%
 		chr2Index = chromosomes(j);
-		chr2LengthBps  = chrLengths(chr1Index);
+		chr2LengthBps  = chrLengths(chr2Index);
 		chr2LengthBins  = ceil(chr2LengthBps/binSize);
 		%
 		chr1FIndices  = chrNewFIndex(chr1Index);
@@ -175,20 +175,18 @@ for i  = 1:1:noChrs
 		[inputFilePath, outputFilePath] = findInOutPaths(obj, chr1Index, chr2Index);
 		[row col v] = find(normIntFreq);
 		dlmwrite(outputFilePath, [row col v], 'delimiter','\t');
+	end
+	%%%	
 end
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %Write correlation-results
-postNormArray = [postNormArray(2:end,:); postNormArray(1,:)];
 %
 dir = obj.outputDirectory;
 preNormFilePath = strcat(dir, '/', 'contactMapPreNorm_transGenomeWise',int2str(obj.contactMapBinSize),'.xls');
 postNormFilePath = strcat(dir, '/', 'contactMapPostNorm_transGenomeWise',int2str(obj.contactMapBinSize),'.xls');
 %
-A = preNormArray;
+A = preSpearmanCorrelation;
 fid = fopen(preNormFilePath,'wt');
 for ii = 1:size(A,1)
 	fprintf(fid,'%g\t',A(ii,:));
@@ -196,7 +194,7 @@ for ii = 1:size(A,1)
 end
 fclose(fid);
 %
-A = postNormArray;
+A = postSpearmanCorrelation;
 fid = fopen(postNormFilePath,'wt');
 for ii = 1:size(A,1)
 	fprintf(fid,'%g\t',A(ii,:));
@@ -238,6 +236,10 @@ function [chrData, outputFilePath] = rawMatrixRead(obj, chr1No, chr2No, chr1Leng
 		col = sparsedData(:,2);
 		v   = sparsedData(:,3);
 		chrData = zeros(chr1Length, chr2Length);
+		chr1Length
+		chr2Length
+		max(row)
+		max(col)
 		lin_idcs = sub2ind(size(chrData), row, col);
 		chrData(lin_idcs) = v;
 end
