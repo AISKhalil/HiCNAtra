@@ -439,8 +439,10 @@ for i  = 1:1:noChrs
 		end
 		%
 		% remove diagonal reads
-		M = intFreq;
-		intFreq = M - diag(diag(M));
+		if(chr1Index == chr2Index)
+			M = intFreq;
+			intFreq = M - diag(diag(M));
+		end
 		%
 		[row col v] = find(intFreq);
 		dlmwrite(filePath, [row col v], 'delimiter','\t');
