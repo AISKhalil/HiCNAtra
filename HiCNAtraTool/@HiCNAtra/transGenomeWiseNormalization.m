@@ -175,8 +175,6 @@ for i  = 1:1:noChrs
 		[inputFilePath, outputFilePath] = findInOutPaths(obj, chr1Index, chr2Index);
 		[row col v] = find(normIntFreq);
 		dlmwrite(outputFilePath, [row col v], 'delimiter','\t');
-	%%%	
-	end
 end
 
 
