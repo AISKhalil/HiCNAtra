@@ -4,6 +4,9 @@
 **HiCNAtra** generates many output files providing the detailed characterization of the copy number profile, the raw contact map, and the HiCNAtra-corrected contact map of the input Hi-C/3C-seq data. It saves BED format files of both large-scale copy number variations (LCVs) and focal alterations (FAs) that can be uploaded into UCSC Genome Browser. Also, it saves text files of the cis and trans interaction frequencies before and after HiCNAtra correction.  
 **HiCNAtra** also provides a visual platform that allows manual review of the CNV profile and the contact maps pre- and post-normalization. 
 
+**To cite CNAtra software, please reference:**
+Khalil, A.I.S., Muzaki, S.R.B.M., Chattopadhyay, A. et al. Identification and utilization of copy number information for correcting Hi-C contact map of cancer cell lines. BMC Bioinformatics 21, 506 (2020). https://doi.org/10.1186/s12859-020-03832-8 
+
 **For a full description of the method and applications, please visit [HiCNAtra Manuscript](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-03832-8).**
   
 ## Contents
