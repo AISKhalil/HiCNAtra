@@ -146,7 +146,6 @@ GM06990_HiC = HiCNAtra(HDF5Files, HiCNAtraDirectory, readLength, restrictionEnzy
 
 % Set more parameters (optional)
 GM06990_HiC.contactMapBinSize = 500000;
-GM06990_HiC.ploidyLevel = 'diploid';
 GM06990_HiC.outputDirectory = 'Example/GM06690_HiC';
 
 % run 'RD calculator' module (Pipeline stage 1)
