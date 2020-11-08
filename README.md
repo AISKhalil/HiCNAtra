@@ -175,5 +175,3 @@ chrNumber = 1;
 GM06990_HiC.normContactMapPlot('plot',chrNumber); 
 
 ```
-
-## HiCNAtra user manual . . . Coming soon!  
