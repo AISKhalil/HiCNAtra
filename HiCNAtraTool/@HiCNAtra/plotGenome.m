@@ -1,4 +1,4 @@
-function obj = plotGenome(obj, saveResult, nBinSize)  
+function obj = plotGenome(obj, saveResult, nBinSize, userCN)  
 
 %Plotting the genome RD signal.
 if(strcmp(saveResult,'save')== 1)
@@ -8,7 +8,7 @@ else
 end
 %%%
 if(saveResult == 1)
-    figure;
+    figure(111);
     set(gcf, 'Position', [1 1 1200 600]);
     set(gcf,'Renderer','painters');
     hold on;
@@ -83,7 +83,11 @@ for i=1:noChrs
     %
     %%----- Clipped Data -------%%
     %Clip the Read-Depth data to a maximum copyNumber of 10.
-    maxCN = max(segmentsCN)+2;
+    if(userCN == -1)
+        maxCN = max(segmentsCN)+2;
+    else
+        maxCN = min(max(segmentsCN)+2, userCN);       
+    end
     globalMax = max(maxCN,globalMax);
     clippedData = min(normData, maxCN);
 

@@ -528,8 +528,8 @@ classdef HiCNAtra < matlab.mixin.Copyable
 		CNARegionPlot(obj, saveResult, varargin)
 		% Plot the CNVs tracks.
 		CNVsTrackPlot(obj, saveResult, varargin) 
-		%
-		plotGenome(obj, saveResult, nBinSize)
+		% Plot the genome-wide CNV track
+		plotGenome(obj, saveResult, nBinSize, userCN)
 		
 		% Plot raw interaction-matrix.
 		rawContactMapPlot(obj, saveResult, varargin) 
