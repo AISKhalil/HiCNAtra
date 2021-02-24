@@ -165,6 +165,13 @@ save('Example/GM06990_HiC.mat');
 chrNumber = 11;
 GM06990_HiC.CNVsTrackPlot('plot',chrNumber);
 
+% plot the genome-wide CNV track
+binSize = 50000;
+cnThreshold = -1; % don't use any threshold;
+GM06990_HiC.plotGenome('plot',binSize, cnThreshold);
+
+
+
 % plot the raw contact map (e.g. chr1 )
 chrNumber = 1;
 GM06990_HiC.rawContactMapPlot('plot',chrNumber);
