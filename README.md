@@ -161,6 +161,9 @@ GM06990_HiC.contactMapCorrector;
 % save the HiCNAtraObject, so you can load it directly for further analysis.
 save('Example/GM06990_HiC.mat');
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Note: use 'plot' argument for plotting or 'save' argument for saving the figure in the output directory.
+
 % plot the CNV tracks (e.g chr11)
 chrNumber = 11;
 GM06990_HiC.CNVsTrackPlot('plot',chrNumber);
@@ -169,8 +172,6 @@ GM06990_HiC.CNVsTrackPlot('plot',chrNumber);
 binSize = 50000;
 cnThreshold = -1; % don't use any threshold;
 GM06990_HiC.plotGenome('plot',binSize, cnThreshold);
-
-
 
 % plot the raw contact map (e.g. chr1 )
 chrNumber = 1;
